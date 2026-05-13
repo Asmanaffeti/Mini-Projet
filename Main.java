@@ -30,7 +30,7 @@ public class Main {
         java.io.File jarFile = new java.io.File(jarPath);
         String repertoire = jarFile.isFile() ? jarFile.getParent() : System.getProperty("user.dir");
         System.out.println("  [Dossier courant] " + repertoire);
-        System.out.println("  Copiez vos fichiers CSV dans : " + repertoire);
+        System.out.println(" Copiez vos fichiers CSV dans : " + repertoire);
 
         List<ListeNoms> listeBases = new ArrayList<>();
         System.out.println("Entrez les fichiers de base un par un (ligne vide pour terminer) :");
