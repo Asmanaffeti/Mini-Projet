@@ -41,7 +41,7 @@ public class Nom {
 
     public String getPremierMot() {
         String[] mots = getMots();
-        if  mots.length > 0 {
+        if  (mots.length > 0) {
             return mots[0] ;
         }
         else {
@@ -50,7 +50,7 @@ public class Nom {
     }
     public String getDernierMot() {
         String[] mots = getMots();
-        if mots.length > 0 {
+        if (mots.length > 0) {
             return mots[mots.length - 1] ;
         }
         else {
