@@ -36,12 +36,16 @@ public class Nom {
 
     public String getPremierMot() {
         String[] mots = getMots();
-        return mots.length > 0 ? mots[0] : "";
+        if  mots.length > 0 {
+            return mots[0] : "";
+        }
     }
-
     public String getDernierMot() {
         String[] mots = getMots();
-        return mots.length > 0 ? mots[mots.length - 1] : "";
+        if mots.length > 0 {
+            return mots[mots.length - 1] : "";
+        }
+
     }
 
     public String toString() {
