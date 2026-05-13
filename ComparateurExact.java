@@ -1,5 +1,10 @@
-public class ComparateurExact extends ResponsableComparaison {
-    public double comparer(Nom nom1, Nom nom2) {
-        return nom1.getNomNormalise().equals(nom2.getNomNormalise()) ? 1.0 : 0.0;
+package pepsmatcher.comparateur;
+
+import pepsmatcher.core.Nom;
+
+public class ComparateurExact implements Comparateur {
+
+    public double comparerNom(Nom nomGauche, Nom nomDroit) {
+        return nomGauche.getNomNormalise().equals(nomDroit.getNomNormalise()) ? 1.0 : 0.0;
     }
 }
