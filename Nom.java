@@ -23,7 +23,12 @@ public class Nom {
     }
 
     public int getNbMots() {
-        return nomNormalise.trim().isEmpty() ? 0 : nomNormalise.trim().split("\\s+").length;
+        if (nomNormalise.trim().isEmpty()) {
+            return 0;
+        }       
+        else {
+            return nomNormalise.trim().split("\\s+").length;
+        }
     }
 
     public int getLongueurTotale() {
@@ -37,13 +42,19 @@ public class Nom {
     public String getPremierMot() {
         String[] mots = getMots();
         if  mots.length > 0 {
-            return mots[0] : "";
+            return mots[0] ;
+        }
+        else {
+            return "" ;
         }
     }
     public String getDernierMot() {
         String[] mots = getMots();
         if mots.length > 0 {
-            return mots[mots.length - 1] : "";
+            return mots[mots.length - 1] ;
+        }
+        else {
+            return "" ;
         }
 
     }
