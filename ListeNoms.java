@@ -1,39 +1,55 @@
+package pepsmatcher.core;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
+
 public class ListeNoms {
-    private Nom nom;
-    private List<Nom> listeNoms;
-    private LocalDate dateChargement;
-    public ListeNoms() {
-        this.listeNoms = new ArrayList<>();
-        this.dateChargement = LocalDate.now();
-    }
-    public ListeNoms(Nom nom) {
-        this();
-        this.nom = nom;
+    private String nomListe;
+    private List<Nom> tableau;
+
+
+    public ListeNoms(String nomListe) {
+        this.nomListe = nomListe;
+        this.tableau = new ArrayList<>();
+
     }
 
-    public void remplirListe(Nom nom) {
-        listeNoms.add(nom);
-    }
-    public int getID(Nom nom) {
-        return listeNoms.indexOf(nom);
-    }
-    public Nom getNom() {
-        return nom;
-    }
-    public void setNom(Nom nom) {
-        this.nom = nom;
-    }
-    public List<Nom> getListeNoms() {
-        return listeNoms;
-    }
-    public void setListeNoms(List<Nom> listeNoms) {
-        this.listeNoms = listeNoms;
-    }
-    public LocalDate getDateChargement() {
-        return dateChargement;
-    }
-    public void setDateChargement(LocalDate dateChargement) {
-        this.dateChargement = dateChargement;
+    public int getID(Nom n) {
+        return tableau.indexOf(n);
     }
 
+    public int taille() {
+        return tableau.size();
+    }
+
+    public String getNomListe() {
+        return nomListe;
+    }
+
+    public List<Nom> getTableau() {
+        return tableau;
+    }
+
+    public void ajouterNom(Nom n) {
+        tableau.add(n);
+    }
+
+    public static ListeNoms lireCSV(String cheminFichier) throws IOException {
+        ListeNoms liste = new ListeNoms(cheminFichier);
+        BufferedReader reader = new BufferedReader(
+            new InputStreamReader(new FileInputStream(cheminFichier), StandardCharsets.UTF_8));
+        String ligne = reader.readLine();
+        while ((ligne = reader.readLine()) != null) {
+            String[] parts = ligne.split(",", 2);
+            if (parts.length >= 2) {
+                String nom = parts[1].trim().replaceAll("^\"|\"$", "");
+                if (!nom.isEmpty()) {
+                    liste.ajouterNom(new Nom(nom));
+                }
+            }
+        }
+        reader.close();
+        return liste;
+    }
 }
