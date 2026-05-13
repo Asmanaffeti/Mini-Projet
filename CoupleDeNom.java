@@ -1,25 +1,19 @@
+package pepsmatcher.core;
 
 public class CoupleDeNom {
     private Nom nomOriginal;
-    private Nom nom;
+    private Nom nomCandidat;
 
-    public CoupleDeNom() {
-    }
-
-    public CoupleDeNom(Nom nomOriginal, Nom nom) {
+    public CoupleDeNom(Nom nomOriginal, Nom nomCandidat) {
         this.nomOriginal = nomOriginal;
-        this.nom = nom;
+        this.nomCandidat = nomCandidat;
     }
 
     public Nom getNomOriginal() {
         return nomOriginal;
     }
 
-    
-
-    public Nom getNom() {
-        return nom;
+    public Nom getNomCandidat() {
+        return nomCandidat;
     }
-
-  
 }
