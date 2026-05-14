@@ -1,36 +1,30 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.List;
+package pepsmatcher.livreur;
 
-public class LivreurFichier extends LivreurResultat {
+import pepsmatcher.core.ResultatMatch;
 
-    private String cheminFichier;
+import java.io.*;
+import java.nio.file.Paths;
 
-    public LivreurFichier(String cheminFichier) {
-        this.cheminFichier = cheminFichier;
+public class LivreurFichier implements LivreurResultat {
+    private String nomFichier;
+
+    public LivreurFichier(String nomFichier) {
+        this.nomFichier = Paths.get(System.getProperty("user.dir"), nomFichier).toString();
+        System.out.println("  [Fichier de sortie] " + this.nomFichier);
     }
 
-    public void livrer(List<ResultatMatch> resultats) {
-
-        try (FileWriter writer = new FileWriter(cheminFichier)) {
-
-            if (resultats == null || resultats.isEmpty()) {
-                writer.write("Aucun match trouvé\n");
-                return;
-            }
-
-            int i = 1;
-            for (ResultatMatch r : resultats) {
-                writer.write(i++ + ". ");
-                writer.write(r.getNomOriginal() + " - " + r.getNomMatch());
-                writer.write(" - " + r.getFichierSource());
-                writer.write(" - " + r.getScore() + "\n");
-            }
-
-            writer.write("Total: " + resultats.size());
-
+    public void livrer(ResultatMatch r) {
+        if (r == null) return;
+        try {
+            FileWriter fw = new FileWriter(nomFichier, true);
+            fw.write(r.toString() + System.lineSeparator());
+            fw.close();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+            System.err.println("Erreur ecriture fichier: " + e.getMessage());
         }
+    }
+
+    public void setResultat(ResultatMatch r) {
+        livrer(r);
     }
 }

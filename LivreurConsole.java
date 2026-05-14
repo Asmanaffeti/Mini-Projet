@@ -1,18 +1,23 @@
-import java.util.List;
+package pepsmatcher.livreur;
 
-public class LivreurConsole extends LivreurResultat {
+import pepsmatcher.core.ResultatMatch;
 
-    public void livrer(List<ResultatMatch> resultats) {
+public class LivreurConsole implements LivreurResultat {
+    private ResultatMatch resultat;
 
-        if (resultats == null || resultats.isEmpty()) {
-            System.out.println("Aucun match trouvé");
-            return;
-        }
-
-        for (ResultatMatch r : resultats) {
+    public void livrer(ResultatMatch r) {
+        if (r != null) {
             System.out.println(r.toString());
         }
+    }
 
-        System.out.println("Total: " + resultats.size());
+    public void setResultat(ResultatMatch r) {
+        this.resultat = r;
+    }
+
+    public void afficherConsole() {
+        if (resultat != null) {
+            System.out.println(resultat.toString());
+        }
     }
 }

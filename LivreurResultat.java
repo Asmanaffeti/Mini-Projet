@@ -1,6 +1,8 @@
-import java.util.List;
+package pepsmatcher.livreur;
 
-public abstract class LivreurResultat {
+import pepsmatcher.core.ResultatMatch;
 
-    public abstract void livrer(List<ResultatMatch> resultats);
+public interface LivreurResultat {
+    void livrer(ResultatMatch r);
+    void setResultat(ResultatMatch r);
 }
