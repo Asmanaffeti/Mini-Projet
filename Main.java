@@ -104,7 +104,7 @@ public class Main {
 
     static void afficherBanniere() {
         System.out.println("============================================");
-        System.out.println("      NAMES MATCHER - Moteur de noms        ");
+        System.out.println("      PEPs MATCHER - Moteur de noms        ");
         System.out.println("============================================");
         System.out.println();
     }
