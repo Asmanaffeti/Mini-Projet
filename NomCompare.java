@@ -16,4 +16,4 @@ public class NomCompare {
     public CoupleDeNom getCouple() {
         return couple;
     }
-}
+} 
